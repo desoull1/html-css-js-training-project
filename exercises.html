@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>CSS exercises</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("seabackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: white;
+            text-align: center;
+            font-family: "Segoe UI", Georgia, serif;
+            text-shadow: 5px 5px 9px black;
+            font-weight: bolder;
+        }
+
+        .center {
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        p {
+            text-align: center;
+            font-family: Garamond, serif;
+            font-size: 40px;
+            color: whitesmoke;
+            text-shadow: 5px 5px 9px black;
+            font-weight: bold;
+        }
+
+
+        .buttons {
+            text-decoration: none;
+            display: flex;
+            gap: 10px 20px;
+            justify-content: center;
+            font-weight: bold;
+            font-family: Garamond, serif;
+            text-shadow: 3px 3px 5px black;
+            color: whitesmoke;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: rgb(29, 120, 148);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: rgb(93, 134, 182);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        .material-symbols-outlined {
+            color: whitesmoke;
+            font-size: 45px !important;
+        }
+
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        .menu-list {
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            display: none;
+            flex-direction: column;
+            background: white;
+            padding: 7px;
+            border-radius: 8px;
+            position: absolute;
+            top: 65px;
+            left: 0;
+        }
+
+            .menu-list a {
+                text-decoration: none;
+                color: black;
+                padding: 8px;
+            }
+
+                .menu-list a:hover {
+                    background: lightgray;
+                }
+
+            .menu-list.active {
+                display: flex;
+            }
+
+        .favorite {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 4px 4px 4px black;
+        }
+
+        #heart {
+            color: whitesmoke;
+            cursor: pointer;
+        }
+
+            #heart.active {
+                color: red;
+            }
+
+        .like {
+            font-family: Bradley Hand, cursive;
+            font-size: 25px;
+            color: whitesmoke;
+            text-shadow: 5px 5px 4px black;
+        }
+
+        .link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .drop {
+            position: absolute;
+            top: -20px;
+            width: 2px;
+            height: 20px;
+            background: white;
+            opacity: 0.3;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="center">
+<h1 class="dotted">Hello! It is my training</h1>
+<p>This is my paragraph</p>
+
+<div class="buttons">
+<a class="buttons button1" href="https://opinieouczelniach.pl/opinie/lubelska-akademia-wsei/">Review</a>
+<a class="buttons button2" href="http://google.com/">Exit</a>
+
+</div>
+</div>
+
+
+<div>
+
+<div class="menu" id="menuBtn">
+<span class="material-symbols-outlined">
+menu
+</span>
+</div>
+
+<div class="favorite">
+<span class="like">If you like my site --></span>
+<span id="heart" class="material-symbols-outlined link">
+favorite
+</span>
+</div>
+
+</div>
+
+
+<div class="menu-list" id="menuList">
+    <a href="https://www.wsei.pl/">Home</a>
+    <a href="https://www.wsei.pl/uczelnia/o-akademii-wsei">About us</a>
+    <a href="https://www.wsei.pl/kontakt 	">Contact</a>
+  </div>
+
+
+<div class="rain"></div>
+
+    <script>
+        console.log("Javascript here");
+
+const menuBtn = document.getElementById("menuBtn");
+const menuList = document.getElementById("menuList");
+
+menuBtn.addEventListener("click", () => {
+  menuList.classList.toggle("active");
+});
+
+const heart = document.getElementById("heart");
+
+heart.addEventListener("click", () => {
+  heart.classList.toggle("active");
+});
+
+function createDrop() {
+  const drop = document.createElement("div");
+  drop.classList.add("drop");
+
+  drop.style.left = Math.random() * 100 + "vw";
+  drop.style.animationDuration = (0.5 + Math.random()) + "s";
+
+  document.body.appendChild(drop);
+
+  drop.addEventListener("animationend", () => {
+    drop.remove();
+  });
+}
+setInterval(createDrop, 40);
+    </script>
+
+</body>
+</html>
